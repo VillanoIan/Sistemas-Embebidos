@@ -1,28 +1,44 @@
-// Online C++ compiler to run C++ program online
 #include <iostream>
 
 int main() 
 {
-    int n[5], contar=0, i, suma=0,sum=0;
-    float promedio=0;
-    for(i=0;i<5;i++)
+int a,suma=0,contador=0;
+ struct Infraccion{
+   int tipo,valor=0,i;
+   char gravedad,motivo;
+ };
+ struct Infraccion infracciones[5];
+ for(a=0;a<5;a++)
+ {
+    struct Infraccion x;
+    printf("Ingrese el tipo:");
+    scanf("%d", &x.tipo);
+    printf("Ingrese el valor:");
+    scanf("%d", &x.valor);
+    printf("Ingrese el gravedad:");
+    getchar();
+    scanf("%c", &x.gravedad);
+    infracciones[a]=x;
+    suma+=x.valor;
+
+    if ((x.tipo==3 or x.tipo==4) and x.gravedad=='G')
     {
-        printf("Ingrese un numero:");
-        scanf("%d", &n[i]);
-        if(n[i]>100)
-        {
-            contar+=1;
-            suma+=n[i];
-        }
-        if(n[i]<-10)
-        {
-            sum+=n[i];
-        }
+        contador+=1;
     }
-    promedio=suma/contar;
+    if(contador>3)
+    {
+        printf("Se debera Clausurar Fabrica\n");
+    }
+        
     
-    printf("El promedio del a suma de los numeros mayores a 100 da: %f", promedio);
-    printf("\n");
-    printf("La suma de los numeros menores a -10 da como resultado: %d", sum);
+    
+    
+ }
+ if(contador<3)
+{
+    printf("El monto total de multas a pagar es: %d", suma);
+}
+
+
     return 0;
 }
