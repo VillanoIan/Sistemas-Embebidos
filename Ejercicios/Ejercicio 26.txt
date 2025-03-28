@@ -5,42 +5,43 @@ struct Contenedor {
     int puerto,identificacion, peso;
     };
     
-int pesototal,indentificacion_total, puertoMP=0, idefMP;
+int pesototal=0, puertoMP=0, idefMP;
 int cont1=0, cont2=0, cont3=0;
 
 int main (void) {
-    struct Contenedor contenedores;
+    struct Contenedor contenedores[5];
     
     for(int i=0; i<5; i++) {
         printf("CONTENEDOR %d\n", i+1);
         
         printf("\nIndentificacion del contenedor (1, 2 o 3):");
-        scanf("%d",&contenedores.identificacion);
+        scanf("%d",&contenedores[i].identificacion);
         
         printf("\nPeso del contenedor (en KG): ");
-        scanf("%d",&contenedores.peso);
+        scanf("%d",&contenedores[i].peso);
         
         printf("\nPuerto donde se dejo el contenedor:");
-        scanf("%d",&contenedores.puerto);
+        scanf("%d",&contenedores[i].puerto);
         
-        pesototal += contenedores.peso;
+        pesototal += contenedores[i].peso;
     
-        if (contenedores.peso > puertoMP) {
-            idefMP = contenedores.identificacion;
+        if (contenedores[i].peso > puertoMP) {
+            puertoMP=contenedores[i].peso;
+            idefMP = contenedores[i].identificacion;
         }
         
-        if(contenedores.puerto == 1) {
+        if(contenedores[i].puerto == 1) {
             cont1 += 1;
         }
-        if(contenedores.puerto == 2) {
+        if(contenedores[i].puerto == 2) {
             cont2 += 1;
         }
-        if(contenedores.puerto == 3) {
+        if(contenedores[i].puerto == 3) {
             cont3 += 1;
         }
     }
     
-    printf("\nPeso total del buque: %d", pesototal);
+    printf("\nPeso total del buque: %d (KG)", pesototal);
     printf("\nEl contenedor con mas peso era de identificacion %d", idefMP);
     printf("\nLa cantidad de contenedor por puerto es:\nPuerto 1: %d\nPuerto 2: %d\nPuerto 3: %d", cont1, cont2, cont3);
 }
